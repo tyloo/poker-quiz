@@ -40,7 +40,7 @@ export default function SummaryPage() {
 
   if (!isHydrated || !session || !session.completed) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading...</div>
       </main>
     );
@@ -63,7 +63,7 @@ export default function SummaryPage() {
   // Performance rating
   const getPerformanceRating = () => {
     if (accuracy >= 90) return { label: 'Excellent!', color: 'text-yellow-400', emoji: '🏆' };
-    if (accuracy >= 75) return { label: 'Great Job!', color: 'text-emerald-400', emoji: '⭐' };
+    if (accuracy >= 75) return { label: 'Great Job!', color: 'text-primary', emoji: '⭐' };
     if (accuracy >= 60) return { label: 'Good Work!', color: 'text-blue-400', emoji: '👍' };
     if (accuracy >= 40) return { label: 'Keep Practicing!', color: 'text-orange-400', emoji: '💪' };
     return { label: 'Room to Grow', color: 'text-gray-400', emoji: '📚' };
@@ -78,7 +78,7 @@ export default function SummaryPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 relative overflow-hidden">
+    <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark relative overflow-hidden">
       {/* Celebratory background for great performance */}
       {isGreatPerformance && (
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -96,7 +96,7 @@ export default function SummaryPage() {
           <h1 className={cn('text-3xl font-bold mb-1', performance.color)}>
             {performance.label}
           </h1>
-          <p className="text-emerald-200 text-sm">Session Complete</p>
+          <p className="text-primary-foreground/70 text-sm">Session Complete</p>
         </header>
 
         {/* Main Stats */}
@@ -106,10 +106,10 @@ export default function SummaryPage() {
               {/* Accuracy */}
               <div>
                 <div className="flex items-center justify-center mb-1">
-                  <Target className="w-5 h-5 text-emerald-400" />
+                  <Target className="w-5 h-5 text-primary" />
                 </div>
                 <div className="text-2xl font-bold text-white">{accuracy}%</div>
-                <div className="text-xs text-emerald-200">Accuracy</div>
+                <div className="text-xs text-primary-foreground/70">Accuracy</div>
               </div>
 
               {/* Score */}
@@ -120,7 +120,7 @@ export default function SummaryPage() {
                 <div className="text-2xl font-bold text-white">
                   {correctCount}/{totalQuestions}
                 </div>
-                <div className="text-xs text-emerald-200">Correct</div>
+                <div className="text-xs text-primary-foreground/70">Correct</div>
               </div>
 
               {/* Streak */}
@@ -129,7 +129,7 @@ export default function SummaryPage() {
                   <Flame className="w-5 h-5 text-orange-400" />
                 </div>
                 <div className="text-2xl font-bold text-white">{bestStreak}</div>
-                <div className="text-xs text-emerald-200">Best Streak</div>
+                <div className="text-xs text-primary-foreground/70">Best Streak</div>
               </div>
             </div>
           </CardContent>
@@ -156,7 +156,7 @@ export default function SummaryPage() {
         {/* Level Progress */}
         <Card className="bg-white/10 border-white/20 mb-4">
           <CardHeader className="pb-2 pt-4 px-4">
-            <CardTitle className="text-sm text-emerald-200 flex items-center gap-2">
+            <CardTitle className="text-sm text-primary-foreground/70 flex items-center gap-2">
               <Sparkles className="w-4 h-4" />
               Level Progress
             </CardTitle>
@@ -169,7 +169,7 @@ export default function SummaryPage() {
         {/* Results Breakdown */}
         <Card className="bg-white/10 border-white/20 mb-6">
           <CardHeader className="pb-2 pt-4 px-4">
-            <CardTitle className="text-sm text-emerald-200">Results Breakdown</CardTitle>
+            <CardTitle className="text-sm text-primary-foreground/70">Results Breakdown</CardTitle>
           </CardHeader>
           <CardContent className="px-4 pb-4">
             <div className="space-y-2">
@@ -245,7 +245,7 @@ export default function SummaryPage() {
           <Button
             onClick={handlePlayAgain}
             size="lg"
-            className="w-full h-14 text-lg font-bold bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 shadow-lg"
+            className="w-full h-14 text-lg font-bold bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg"
           >
             <RotateCcw className="w-5 h-5 mr-2" />
             Play Again

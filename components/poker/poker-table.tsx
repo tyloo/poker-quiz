@@ -37,9 +37,9 @@ export function PokerTable({ scenario, showHeroCards = true, className }: PokerT
       {/* Table felt */}
       <div className="relative aspect-[4/3] w-full">
         {/* Outer border */}
-        <div className="absolute inset-0 rounded-[50%] bg-gradient-to-b from-amber-900 to-amber-950 p-2">
+        <div className="absolute inset-0 rounded-[50%] bg-gradient-to-b from-poker-rail to-poker-rail-dark p-2">
           {/* Inner felt */}
-          <div className="relative w-full h-full rounded-[50%] bg-gradient-to-b from-emerald-700 to-emerald-800 shadow-inner overflow-hidden">
+          <div className="relative w-full h-full rounded-[50%] bg-gradient-to-b from-poker-table-light to-poker-table shadow-inner overflow-hidden">
             {/* Felt texture overlay */}
             <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_50%_50%,transparent_0%,rgba(0,0,0,0.3)_100%)]" />
 

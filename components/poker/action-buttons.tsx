@@ -23,32 +23,32 @@ const ACTION_CONFIG: Record<
   fold: {
     label: 'Fold',
     variant: 'secondary',
-    className: 'bg-gray-500 hover:bg-gray-600 text-white',
+    className: 'bg-action-fold hover:bg-action-fold-hover text-white',
   },
   check: {
     label: 'Check',
     variant: 'secondary',
-    className: 'bg-green-600 hover:bg-green-700 text-white',
+    className: 'bg-action-check hover:bg-action-check-hover text-white',
   },
   call: {
     label: 'Call',
     variant: 'default',
-    className: 'bg-blue-600 hover:bg-blue-700 text-white',
+    className: 'bg-action-call hover:bg-action-call-hover text-white',
   },
   raise: {
     label: 'Raise',
     variant: 'default',
-    className: 'bg-red-600 hover:bg-red-700 text-white',
+    className: 'bg-action-raise hover:bg-action-raise-hover text-white',
   },
   bet: {
     label: 'Bet',
     variant: 'default',
-    className: 'bg-orange-600 hover:bg-orange-700 text-white',
+    className: 'bg-action-bet hover:bg-action-bet-hover text-white',
   },
   'all-in': {
     label: 'All-In',
     variant: 'destructive',
-    className: 'bg-purple-600 hover:bg-purple-700 text-white',
+    className: 'bg-action-allin hover:bg-action-allin-hover text-white',
   },
 };
 
@@ -130,7 +130,7 @@ export function QuizActionButtons({
             disabled={disabled}
             className={cn(
               'min-h-[56px] text-lg font-bold',
-              'bg-gray-600 hover:bg-gray-700 text-white',
+              'bg-action-fold hover:bg-action-fold-hover text-white',
               'active:scale-95 transition-transform',
               disabled && 'opacity-50'
             )}
@@ -146,7 +146,7 @@ export function QuizActionButtons({
             disabled={disabled}
             className={cn(
               'min-h-[56px] text-lg font-bold',
-              'bg-green-600 hover:bg-green-700 text-white',
+              'bg-action-check hover:bg-action-check-hover text-white',
               'active:scale-95 transition-transform',
               disabled && 'opacity-50'
             )}
@@ -160,7 +160,7 @@ export function QuizActionButtons({
             disabled={disabled}
             className={cn(
               'min-h-[56px] text-lg font-bold flex flex-col',
-              'bg-blue-600 hover:bg-blue-700 text-white',
+              'bg-action-call hover:bg-action-call-hover text-white',
               'active:scale-95 transition-transform',
               disabled && 'opacity-50'
             )}
@@ -179,7 +179,7 @@ export function QuizActionButtons({
             disabled={disabled}
             className={cn(
               'min-h-[56px] text-lg font-bold',
-              'bg-red-600 hover:bg-red-700 text-white',
+              'bg-action-raise hover:bg-action-raise-hover text-white',
               'active:scale-95 transition-transform',
               disabled && 'opacity-50'
             )}

@@ -38,8 +38,8 @@ export function SessionProgress({
       {/* Stats row */}
       <div className="flex items-center justify-between text-sm">
         {/* Question counter */}
-        <div className="flex items-center gap-1.5">
-          <span className="text-muted-foreground">Question</span>
+        <div className="flex items-center gap-1.5 text-white">
+          <span>Question</span>
           <span className="font-bold">
             {currentQuestion}/{totalQuestions}
           </span>
@@ -71,7 +71,7 @@ export function SessionProgress({
           {/* Score */}
           <Badge variant="outline" className="gap-1">
             <Trophy className="w-3 h-3 text-yellow-500" />
-            <span>{sessionScore}</span>
+            <span className='text-white'>{sessionScore}</span>
           </Badge>
         </div>
       </div>

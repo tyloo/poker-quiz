@@ -17,10 +17,10 @@ import { cn } from '@/lib/utils';
 import type { Difficulty, Street, ActionType } from '@/lib/types';
 
 const DIFFICULTY_COLORS: Record<Difficulty, string> = {
-  beginner: 'bg-green-500',
-  intermediate: 'bg-blue-500',
-  advanced: 'bg-orange-500',
-  expert: 'bg-red-500',
+  beginner: 'bg-difficulty-beginner',
+  intermediate: 'bg-difficulty-intermediate',
+  advanced: 'bg-difficulty-advanced',
+  expert: 'bg-difficulty-expert',
 };
 
 const STREET_LABELS: Record<Street, string> = {
@@ -45,7 +45,7 @@ export default function StatsPage() {
 
   if (!isHydrated) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading...</div>
       </main>
     );
@@ -61,7 +61,7 @@ export default function StatsPage() {
     answered > 0 ? Math.round((correct / answered) * 100) : 0;
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950">
+    <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark">
       <div className="container max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <header className="flex items-center gap-4 mb-6">
@@ -76,7 +76,7 @@ export default function StatsPage() {
           </Link>
           <div>
             <h1 className="text-2xl font-bold text-white">Your Statistics</h1>
-            <p className="text-emerald-200 text-sm">Track your progress</p>
+            <p className="text-primary-foreground/70 text-sm">Track your progress</p>
           </div>
         </header>
 
@@ -93,8 +93,8 @@ export default function StatsPage() {
               {/* Total Questions */}
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <Target className="w-4 h-4 text-emerald-400" />
-                  <span className="text-xs text-emerald-200">Total Questions</span>
+                  <Target className="w-4 h-4 text-primary" />
+                  <span className="text-xs text-primary-foreground/70">Total Questions</span>
                 </div>
                 <div className="text-2xl font-bold text-white">
                   {stats.totalQuestionsAnswered}
@@ -104,8 +104,8 @@ export default function StatsPage() {
               {/* Overall Accuracy */}
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="flex items-center gap-2 mb-1">
-                  <TrendingUp className="w-4 h-4 text-emerald-400" />
-                  <span className="text-xs text-emerald-200">Accuracy</span>
+                  <TrendingUp className="w-4 h-4 text-primary" />
+                  <span className="text-xs text-primary-foreground/70">Accuracy</span>
                 </div>
                 <div className="text-2xl font-bold text-white">{overallAccuracy}%</div>
               </div>
@@ -114,7 +114,7 @@ export default function StatsPage() {
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="flex items-center gap-2 mb-1">
                   <Flame className="w-4 h-4 text-orange-400" />
-                  <span className="text-xs text-emerald-200">Best Streak</span>
+                  <span className="text-xs text-primary-foreground/70">Best Streak</span>
                 </div>
                 <div className="text-2xl font-bold text-white">{stats.bestStreak}</div>
               </div>
@@ -123,7 +123,7 @@ export default function StatsPage() {
               <div className="bg-white/5 rounded-lg p-3">
                 <div className="flex items-center gap-2 mb-1">
                   <Layers className="w-4 h-4 text-purple-400" />
-                  <span className="text-xs text-emerald-200">Sessions</span>
+                  <span className="text-xs text-primary-foreground/70">Sessions</span>
                 </div>
                 <div className="text-2xl font-bold text-white">{stats.totalSessions}</div>
               </div>
@@ -145,7 +145,7 @@ export default function StatsPage() {
                   <div key={difficulty}>
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-sm text-white capitalize">{difficulty}</span>
-                      <span className="text-xs text-emerald-200">
+                      <span className="text-xs text-primary-foreground/70">
                         {stat.correct}/{stat.answered} ({accuracy}%)
                       </span>
                     </div>
@@ -175,13 +175,13 @@ export default function StatsPage() {
                 <div key={street}>
                   <div className="flex justify-between items-center mb-1">
                     <span className="text-sm text-white">{STREET_LABELS[street]}</span>
-                    <span className="text-xs text-emerald-200">
+                    <span className="text-xs text-primary-foreground/70">
                       {stat.correct}/{stat.answered} ({accuracy}%)
                     </span>
                   </div>
                   <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                     <div
-                      className="h-full rounded-full transition-all bg-emerald-500"
+                      className="h-full rounded-full transition-all bg-primary"
                       style={{ width: `${accuracy}%` }}
                     />
                   </div>
@@ -208,13 +208,13 @@ export default function StatsPage() {
                   <div key={action}>
                     <div className="flex justify-between items-center mb-1">
                       <span className="text-sm text-white">{ACTION_LABELS[action]}</span>
-                      <span className="text-xs text-emerald-200">
+                      <span className="text-xs text-primary-foreground/70">
                         {stat.correct}/{stat.answered} ({accuracy}%)
                       </span>
                     </div>
                     <div className="h-2 bg-white/10 rounded-full overflow-hidden">
                       <div
-                        className="h-full rounded-full transition-all bg-blue-500"
+                        className="h-full rounded-full transition-all bg-action-call"
                         style={{ width: `${accuracy}%` }}
                       />
                     </div>

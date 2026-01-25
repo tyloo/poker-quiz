@@ -70,14 +70,13 @@ export function PlayingCard({
   );
 }
 
-function CardBack({ size }: { size: 'sm' | 'md' | 'lg' }) {
+function CardBack(_props: { size: 'sm' | 'md' | 'lg' }) {
   return (
     <div
       className={cn(
         'w-full h-full rounded-lg border-2 border-gray-300 dark:border-gray-600',
         'bg-gradient-to-br from-blue-600 to-blue-800',
-        'flex items-center justify-center',
-        SIZE_CLASSES[size]
+        'flex items-center justify-center overflow-hidden'
       )}
     >
       <div className="w-3/4 h-3/4 rounded border-2 border-blue-400/50 bg-blue-700/50" />
@@ -94,20 +93,19 @@ function CardFace({ card, size }: { card: Card; size: 'sm' | 'md' | 'lg' }) {
       className={cn(
         'w-full h-full rounded-lg border-2 border-gray-200 dark:border-gray-700',
         'bg-white dark:bg-gray-800',
-        'flex flex-col items-center justify-between p-1',
-        SIZE_CLASSES[size]
+        'flex flex-col items-center justify-between p-0.5 overflow-hidden'
       )}
     >
       {/* Top left corner */}
       <div className={cn('self-start flex flex-col items-center leading-none', suitColor)}>
-        <span className={cn('font-bold', RANK_SIZE_CLASSES[size])}>{card.rank}</span>
-        <span className={SUIT_SIZE_CLASSES[size]}>{suitSymbol}</span>
+        <span className={cn('font-bold', size === 'sm' ? 'text-xs' : RANK_SIZE_CLASSES[size])}>{card.rank}</span>
+        <span className={size === 'sm' ? 'text-xs' : SUIT_SIZE_CLASSES[size]}>{suitSymbol}</span>
       </div>
 
       {/* Center suit */}
-      <div className={cn('flex-1 flex items-center justify-center', suitColor)}>
+      <div className={cn('flex items-center justify-center', suitColor)}>
         <span className={cn(
-          size === 'sm' && 'text-2xl',
+          size === 'sm' && 'text-base',
           size === 'md' && 'text-4xl',
           size === 'lg' && 'text-6xl'
         )}>
@@ -117,8 +115,8 @@ function CardFace({ card, size }: { card: Card; size: 'sm' | 'md' | 'lg' }) {
 
       {/* Bottom right corner (rotated) */}
       <div className={cn('self-end flex flex-col items-center leading-none rotate-180', suitColor)}>
-        <span className={cn('font-bold', RANK_SIZE_CLASSES[size])}>{card.rank}</span>
-        <span className={SUIT_SIZE_CLASSES[size]}>{suitSymbol}</span>
+        <span className={cn('font-bold', size === 'sm' ? 'text-xs' : RANK_SIZE_CLASSES[size])}>{card.rank}</span>
+        <span className={size === 'sm' ? 'text-xs' : SUIT_SIZE_CLASSES[size]}>{suitSymbol}</span>
       </div>
     </div>
   );

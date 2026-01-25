@@ -28,7 +28,7 @@ export default function AchievementsPage() {
 
   if (!isHydrated) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading...</div>
       </main>
     );
@@ -49,7 +49,7 @@ export default function AchievementsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950">
+    <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark">
       <div className="container max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <header className="flex items-center gap-4 mb-6">
@@ -64,7 +64,7 @@ export default function AchievementsPage() {
           </Link>
           <div className="flex-1">
             <h1 className="text-2xl font-bold text-white">Achievements</h1>
-            <p className="text-emerald-200 text-sm">
+            <p className="text-primary-foreground/70 text-sm">
               {earnedCount} of {totalCount} unlocked
             </p>
           </div>
@@ -84,7 +84,7 @@ export default function AchievementsPage() {
               className={cn(
                 'whitespace-nowrap',
                 selectedCategory === category
-                  ? 'bg-emerald-600 hover:bg-emerald-700'
+                  ? 'bg-primary hover:bg-primary/80'
                   : 'bg-white/10 border-white/20 text-white hover:bg-white/20'
               )}
               onClick={() => setSelectedCategory(category)}
@@ -169,7 +169,7 @@ export default function AchievementsPage() {
                           </div>
                           <div className="h-1.5 bg-white/10 rounded-full overflow-hidden">
                             <div
-                              className="h-full bg-emerald-500 rounded-full transition-all"
+                              className="h-full bg-primary rounded-full transition-all"
                               style={{ width: `${progressPercent}%` }}
                             />
                           </div>

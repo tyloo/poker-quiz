@@ -155,7 +155,7 @@ export default function QuizPage() {
 
   if (!isHydrated || !session) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading...</div>
       </main>
     );
@@ -163,7 +163,7 @@ export default function QuizPage() {
 
   if (!currentScenario) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading scenario...</div>
       </main>
     );
@@ -174,7 +174,7 @@ export default function QuizPage() {
   const callAmount = getCallAmount(currentScenario);
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex flex-col">
+    <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex flex-col">
       {/* Header */}
       <header className="flex items-center justify-between px-4 py-3 bg-black/20">
         <Button
@@ -211,7 +211,7 @@ export default function QuizPage() {
         <PokerTable scenario={currentScenario} showHeroCards className="mb-4" />
 
         {/* Action History */}
-        <div className="bg-white/10 backdrop-blur rounded-xl p-3 mb-4">
+        <div className="bg-white/95 dark:bg-zinc-900/95 rounded-xl p-3 mb-4 shadow-lg">
           <ActionHistory
             actions={currentScenario.actionHistory}
             heroPosition={currentScenario.heroPosition}

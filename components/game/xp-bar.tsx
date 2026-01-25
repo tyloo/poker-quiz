@@ -78,7 +78,7 @@ export function XPBar({
 
           {/* XP details */}
           {showDetails && (
-            <div className="flex justify-between mt-1 text-xs text-muted-foreground">
+            <div className="flex justify-between mt-1 text-xs text-white">
               <span>{formatXP(xpInLevel)} XP</span>
               <span>{formatXP(xpNeeded)} needed</span>
             </div>
