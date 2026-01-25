@@ -53,7 +53,11 @@ export function PokerTable({ scenario, showHeroCards = true, className }: PokerT
               {/* Community cards */}
               <div className="flex gap-1">
                 {[0, 1, 2, 3, 4].map((index) => (
-                  <div key={index}>
+                  <div
+                    key={index}
+                    className="animate-in fade-in zoom-in-95 duration-300"
+                    style={{ animationDelay: `${index * 100}ms` }}
+                  >
                     {communityCards[index] ? (
                       <PlayingCard card={communityCards[index]} size="sm" animate />
                     ) : (
