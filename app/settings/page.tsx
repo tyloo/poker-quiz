@@ -60,7 +60,7 @@ export default function SettingsPage() {
 
   if (!isHydrated) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading...</div>
       </main>
     );
@@ -92,7 +92,7 @@ export default function SettingsPage() {
   };
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950">
+    <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark">
       <div className="container max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <header className="flex items-center gap-4 mb-6">
@@ -110,7 +110,7 @@ export default function SettingsPage() {
               <Settings className="w-6 h-6" />
               Settings
             </h1>
-            <p className="text-emerald-200 text-sm">Customize your experience</p>
+            <p className="text-primary-foreground/70 text-sm">Customize your experience</p>
           </div>
         </header>
 
@@ -125,7 +125,7 @@ export default function SettingsPage() {
           <CardContent className="space-y-4">
             {/* Session Length */}
             <div className="space-y-2">
-              <Label className="text-emerald-200 text-sm">Questions per Session</Label>
+              <Label className="text-primary-foreground/70 text-sm">Questions per Session</Label>
               <Select
                 value={settings.defaultSessionLength.toString()}
                 onValueChange={handleSessionLengthChange}
@@ -145,7 +145,7 @@ export default function SettingsPage() {
 
             {/* Default Difficulty */}
             <div className="space-y-2">
-              <Label className="text-emerald-200 text-sm">Default Difficulty</Label>
+              <Label className="text-primary-foreground/70 text-sm">Default Difficulty</Label>
               <Select
                 value={settings.defaultDifficulty}
                 onValueChange={handleDifficultyChange}
@@ -165,7 +165,7 @@ export default function SettingsPage() {
 
             {/* Street Filter */}
             <div className="space-y-2">
-              <Label className="text-emerald-200 text-sm">Street Filter</Label>
+              <Label className="text-primary-foreground/70 text-sm">Street Filter</Label>
               <Select
                 value={settings.streetFilter}
                 onValueChange={handleStreetFilterChange}
@@ -199,12 +199,12 @@ export default function SettingsPage() {
               onClick={handleSoundToggle}
               className={cn(
                 'w-full flex items-center justify-between p-3 rounded-lg transition-colors',
-                settings.soundEnabled ? 'bg-emerald-500/20' : 'bg-white/5'
+                settings.soundEnabled ? 'bg-primary/20' : 'bg-white/5'
               )}
             >
               <div className="flex items-center gap-3">
                 {settings.soundEnabled ? (
-                  <Volume2 className="w-5 h-5 text-emerald-400" />
+                  <Volume2 className="w-5 h-5 text-primary" />
                 ) : (
                   <VolumeX className="w-5 h-5 text-gray-400" />
                 )}
@@ -213,7 +213,7 @@ export default function SettingsPage() {
               <div
                 className={cn(
                   'w-10 h-6 rounded-full transition-colors relative',
-                  settings.soundEnabled ? 'bg-emerald-500' : 'bg-white/20'
+                  settings.soundEnabled ? 'bg-primary' : 'bg-white/20'
                 )}
               >
                 <div
@@ -230,17 +230,17 @@ export default function SettingsPage() {
               onClick={handleReducedMotionToggle}
               className={cn(
                 'w-full flex items-center justify-between p-3 rounded-lg transition-colors',
-                settings.reducedMotion ? 'bg-emerald-500/20' : 'bg-white/5'
+                settings.reducedMotion ? 'bg-primary/20' : 'bg-white/5'
               )}
             >
               <div className="flex items-center gap-3">
-                <Sparkles className={cn('w-5 h-5', settings.reducedMotion ? 'text-gray-400' : 'text-emerald-400')} />
+                <Sparkles className={cn('w-5 h-5', settings.reducedMotion ? 'text-gray-400' : 'text-primary')} />
                 <span className="text-white text-sm">Reduced Motion</span>
               </div>
               <div
                 className={cn(
                   'w-10 h-6 rounded-full transition-colors relative',
-                  settings.reducedMotion ? 'bg-emerald-500' : 'bg-white/20'
+                  settings.reducedMotion ? 'bg-primary' : 'bg-white/20'
                 )}
               >
                 <div

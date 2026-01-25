@@ -14,11 +14,31 @@ import { Play, BarChart3, Trophy, Settings, Lock, Sparkles } from 'lucide-react'
 import type { Difficulty } from '@/lib/types';
 import { cn } from '@/lib/utils';
 
-const DIFFICULTY_INFO: Record<Difficulty, { color: string; bgColor: string }> = {
-  beginner: { color: 'text-green-600', bgColor: 'bg-green-500/10 border-green-500/30' },
-  intermediate: { color: 'text-blue-600', bgColor: 'bg-blue-500/10 border-blue-500/30' },
-  advanced: { color: 'text-orange-600', bgColor: 'bg-orange-500/10 border-orange-500/30' },
-  expert: { color: 'text-red-600', bgColor: 'bg-red-500/10 border-red-500/30' },
+const DIFFICULTY_INFO: Record<Difficulty, { color: string; bgColor: string; gradient: string; iconBg: string }> = {
+  beginner: {
+    color: 'text-emerald-600',
+    bgColor: 'bg-white border-emerald-200',
+    gradient: 'from-emerald-500 to-emerald-600',
+    iconBg: 'bg-emerald-100'
+  },
+  intermediate: {
+    color: 'text-blue-600',
+    bgColor: 'bg-white border-blue-200',
+    gradient: 'from-blue-500 to-blue-600',
+    iconBg: 'bg-blue-100'
+  },
+  advanced: {
+    color: 'text-amber-600',
+    bgColor: 'bg-white border-amber-200',
+    gradient: 'from-amber-500 to-amber-600',
+    iconBg: 'bg-amber-100'
+  },
+  expert: {
+    color: 'text-red-600',
+    bgColor: 'bg-white border-red-200',
+    gradient: 'from-red-500 to-red-600',
+    iconBg: 'bg-red-100'
+  },
 };
 
 const DIFFICULTY_DESCRIPTIONS: Record<Difficulty, string> = {
@@ -64,19 +84,19 @@ export default function HomePage() {
 
   if (!isHydrated) {
     return (
-      <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950 flex items-center justify-center">
+      <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark flex items-center justify-center">
         <div className="animate-pulse text-white">Loading...</div>
       </main>
     );
   }
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-emerald-900 to-emerald-950">
+    <main className="min-h-screen bg-gradient-to-b from-poker-felt to-poker-felt-dark">
       <div className="container max-w-md mx-auto px-4 py-6">
         {/* Header */}
         <header className="text-center mb-6">
           <h1 className="text-3xl font-bold text-white mb-2">Poker Quiz</h1>
-          <p className="text-emerald-200 text-sm">Master your poker decisions</p>
+          <p className="text-primary-foreground/70 text-sm">Master your poker decisions</p>
         </header>
 
         {/* XP Bar */}
@@ -88,7 +108,7 @@ export default function HomePage() {
         <Button
           onClick={handleQuickPlay}
           size="lg"
-          className="w-full h-14 text-lg font-bold mb-6 bg-gradient-to-r from-emerald-500 to-emerald-600 hover:from-emerald-600 hover:to-emerald-700 shadow-lg"
+          className="w-full h-14 text-lg font-bold mb-6 bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 shadow-lg"
         >
           <Play className="w-6 h-6 mr-2" />
           Quick Play
@@ -114,26 +134,40 @@ export default function HomePage() {
                   <Card
                     key={difficulty}
                     className={cn(
-                      'cursor-pointer transition-all border-2',
-                      isUnlocked ? info.bgColor : 'bg-gray-100/50 border-gray-300/30 opacity-60',
-                      isSelected && 'ring-2 ring-primary ring-offset-2',
-                      !isUnlocked && 'cursor-not-allowed'
+                      'relative overflow-hidden transition-all duration-200 border-2',
+                      isUnlocked
+                        ? cn(info.bgColor, 'cursor-pointer hover:shadow-lg hover:scale-[1.02]')
+                        : 'bg-gray-100 border-gray-200 cursor-not-allowed',
+                      isSelected && 'ring-2 ring-offset-2 ring-emerald-500 shadow-lg'
                     )}
                     onClick={() => handleDifficultySelect(difficulty)}
                   >
-                    <CardHeader className="p-3 pb-1">
-                      <CardTitle className={cn('text-sm capitalize flex items-center justify-between', info.color)}>
+                    {/* Colored accent bar at top */}
+                    <div className={cn(
+                      'absolute top-0 left-0 right-0 h-1',
+                      isUnlocked ? `bg-gradient-to-r ${info.gradient}` : 'bg-gray-300'
+                    )} />
+
+                    <CardHeader className="p-3 pb-1 pt-4">
+                      <CardTitle className={cn(
+                        'text-sm font-bold capitalize flex items-center justify-between',
+                        isUnlocked ? info.color : 'text-gray-400'
+                      )}>
                         {difficulty}
-                        {!isUnlocked && <Lock className="w-4 h-4 text-gray-400" />}
+                        {!isUnlocked && (
+                          <div className="flex items-center justify-center w-6 h-6 rounded-full bg-gray-200">
+                            <Lock className="w-3.5 h-3.5 text-gray-500" />
+                          </div>
+                        )}
                       </CardTitle>
                     </CardHeader>
                     <CardContent className="p-3 pt-0">
                       {isUnlocked ? (
-                        <CardDescription className="text-xs line-clamp-2">
+                        <CardDescription className="text-xs text-gray-600 line-clamp-2">
                           {DIFFICULTY_DESCRIPTIONS[difficulty]}
                         </CardDescription>
                       ) : (
-                        <CardDescription className="text-xs text-gray-500">
+                        <CardDescription className="text-xs text-gray-400 font-medium">
                           Unlock at Level {DIFFICULTY_UNLOCK_LEVELS[difficulty]}
                         </CardDescription>
                       )}
