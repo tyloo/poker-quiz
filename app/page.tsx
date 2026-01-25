@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import { useRouter } from 'next/navigation';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
@@ -28,6 +29,7 @@ const DIFFICULTY_DESCRIPTIONS: Record<Difficulty, string> = {
 };
 
 export default function HomePage() {
+  const router = useRouter();
   const isHydrated = useStoreHydration();
   const progress = usePlayerProgressHydrated();
   const settings = usePlayerSettingsHydrated();
@@ -41,7 +43,7 @@ export default function HomePage() {
       streetFilter: settings.streetFilter,
       topics: settings.topics,
     });
-    window.location.href = '/quiz';
+    router.push('/quiz');
   };
 
   const handleDifficultySelect = (difficulty: Difficulty) => {
@@ -57,7 +59,7 @@ export default function HomePage() {
       streetFilter: settings.streetFilter,
       topics: settings.topics,
     });
-    window.location.href = '/quiz';
+    router.push('/quiz');
   };
 
   if (!isHydrated) {
