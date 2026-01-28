@@ -13,6 +13,7 @@ import type {
   PlayerSettings,
   Achievement,
 } from '@/lib/types';
+import { calculateLevel } from '@/lib/game/leveling';
 
 // Default stats structure
 const createDefaultStats = (): PlayerStats => ({
@@ -99,7 +100,7 @@ interface GameStoreState extends GameState, SessionState, PlayerState {
 
   // Player Actions
   addXP: (amount: number) => void;
-  unlockAchievement: (achievement: Achievement) => void;
+  unlockAchievement: (achievement: Achievement, xpReward?: number) => void;
   clearPendingAchievements: () => void;
   updateStats: (
     difficulty: Difficulty,
@@ -250,21 +251,29 @@ export const useGameStore = create<GameStoreState>()(
       // Player Actions
       addXP: (amount) => {
         const { progress } = get();
+        const newXP = progress.xp + amount;
+        const newLevel = calculateLevel(newXP);
         set({
           progress: {
             ...progress,
-            xp: progress.xp + amount,
+            xp: newXP,
+            level: newLevel,
           },
         });
       },
 
-      unlockAchievement: (achievement) => {
+      unlockAchievement: (achievement, xpReward = 0) => {
         const { progress, pendingAchievements } = get();
         if (progress.achievements.includes(achievement.id)) return;
+
+        const newXP = progress.xp + xpReward;
+        const newLevel = calculateLevel(newXP);
 
         set({
           progress: {
             ...progress,
+            xp: newXP,
+            level: newLevel,
             achievements: [...progress.achievements, achievement.id],
           },
           pendingAchievements: [

@@ -106,12 +106,12 @@ export default function QuizPage() {
 
     // Check level up and unlock new difficulties
     const newXP = previousXP + earned;
+    const newLevel = calculateLevel(newXP);
     if (checkLevelUp(previousXP, newXP)) {
-      const newLevel = calculateLevel(newXP);
       // Unlock difficulties based on new level
-      if (newLevel >= 3) unlockDifficulty('intermediate');
-      if (newLevel >= 6) unlockDifficulty('advanced');
-      if (newLevel >= 10) unlockDifficulty('expert');
+      if (newLevel >= 2) unlockDifficulty('intermediate');
+      if (newLevel >= 4) unlockDifficulty('advanced');
+      if (newLevel >= 7) unlockDifficulty('expert');
     }
 
     // Check achievements
@@ -121,10 +121,10 @@ export default function QuizPage() {
       totalCorrect: progress.stats.totalCorrect + (action === currentScenario.optimalAction ? 1 : 0),
       bestStreak: Math.max(progress.stats.bestStreak, action === currentScenario.optimalAction ? session.streak + 1 : 0),
     };
-    const newProgress = { ...progress, xp: newXP, stats: newStats };
+    const newProgress = { ...progress, xp: newXP, level: newLevel, stats: newStats };
     const newAchievements = checkNewAchievements(newStats, newProgress, progress.achievements);
     newAchievements.forEach((achievement) => {
-      unlockAchievement(toAchievement(achievement, new Date()));
+      unlockAchievement(toAchievement(achievement, new Date()), achievement.xpReward);
     });
   }, [currentScenario, session, isAnswered, submitAnswer, recordResult, updateStats, addXP, unlockDifficulty, unlockAchievement, progress, isCorrect]);
 

@@ -1,28 +1,28 @@
 import type { Difficulty } from '@/lib/types';
 
-// XP thresholds for each level (exponential curve)
-// Level 1 starts at 0 XP, Level 2 at 100 XP, etc.
+// XP thresholds for each level (smooth progression curve)
+// Level 1 starts at 0 XP, Level 2 at 50 XP, etc.
 export const LEVEL_THRESHOLDS: number[] = [
   0,      // Level 1
-  100,    // Level 2
-  250,    // Level 3
-  500,    // Level 4
-  850,    // Level 5
-  1300,   // Level 6
-  1900,   // Level 7
-  2650,   // Level 8
-  3550,   // Level 9
-  4600,   // Level 10
-  5850,   // Level 11
-  7300,   // Level 12
-  8950,   // Level 13
-  10800,  // Level 14
-  12850,  // Level 15
-  15100,  // Level 16
-  17550,  // Level 17
-  20200,  // Level 18
-  23050,  // Level 19
-  26100,  // Level 20
+  50,     // Level 2
+  120,    // Level 3
+  220,    // Level 4
+  350,    // Level 5
+  520,    // Level 6
+  730,    // Level 7
+  1000,   // Level 8
+  1350,   // Level 9
+  1800,   // Level 10
+  2350,   // Level 11
+  3000,   // Level 12
+  3750,   // Level 13
+  4600,   // Level 14
+  5550,   // Level 15
+  6600,   // Level 16
+  7750,   // Level 17
+  9000,   // Level 18
+  10350,  // Level 19
+  11800,  // Level 20
 ];
 
 export const MAX_LEVEL = LEVEL_THRESHOLDS.length;
@@ -51,9 +51,9 @@ export const STREAK_BONUS_THRESHOLDS = [
 // Difficulty unlock requirements (level needed to unlock)
 export const DIFFICULTY_UNLOCK_LEVELS: Record<Difficulty, number> = {
   beginner: 1,
-  intermediate: 3,
-  advanced: 6,
-  expert: 10,
+  intermediate: 2,
+  advanced: 4,
+  expert: 7,
 };
 
 /**
