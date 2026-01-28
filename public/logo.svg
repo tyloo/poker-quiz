@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" fill="none">
+  <!-- Background circle -->
+  <circle cx="60" cy="60" r="56" fill="#166534" stroke="#15803d" stroke-width="4"/>
+
+  <!-- Spade symbol -->
+  <path d="M60 25 C60 25 35 50 35 65 C35 75 45 82 55 78 L55 90 L45 90 L45 95 L75 95 L75 90 L65 90 L65 78 C75 82 85 75 85 65 C85 50 60 25 60 25Z" fill="white"/>
+
+  <!-- Question mark overlay -->
+  <text x="60" y="72" font-family="Arial, sans-serif" font-size="28" font-weight="bold" fill="#166534" text-anchor="middle">?</text>
+</svg>

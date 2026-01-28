@@ -1,7 +1,22 @@
 {
-  "name": "poker-quizz",
-  "version": "0.1.0",
-  "private": true,
+  "name": "poker-quiz",
+  "version": "1.0.0",
+  "description": "Master poker decision-making through interactive scenarios",
+  "author": "Tyloo <jbonva@gmail.com>",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tyloo/poker-quiz.git"
+  },
+  "homepage": "https://poker-quiz.vercel.app",
+  "keywords": [
+    "poker",
+    "quiz",
+    "learning",
+    "nextjs",
+    "react",
+    "typescript"
+  ],
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -34,5 +49,8 @@
     "eslint-config-next": "16.1.6",
     "tailwindcss": "^4",
     "typescript": "^5"
+  },
+  "engines": {
+    "node": ">=18.17.0"
   }
 }
