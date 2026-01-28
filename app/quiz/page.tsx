@@ -140,7 +140,13 @@ export default function QuizPage() {
       router.push('/quiz/summary');
     } else {
       // Load next scenario
-      const scenario = getRandomScenario(session.config, usedScenarioIdsRef.current);
+      let scenario = getRandomScenario(session.config, usedScenarioIdsRef.current);
+
+      // If we run out of unique scenarios, allow repeats
+      if (!scenario) {
+        scenario = getRandomScenario(session.config, []);
+      }
+
       if (scenario) {
         nextQuestion(scenario);
         usedScenarioIdsRef.current = [...usedScenarioIdsRef.current, scenario.id];
