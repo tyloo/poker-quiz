@@ -10,7 +10,7 @@
   [![Next.js](https://img.shields.io/badge/Next.js-16-black)](https://nextjs.org/)
   [![TypeScript](https://img.shields.io/badge/TypeScript-5-blue)](https://www.typescriptlang.org/)
 
-  [Live Demo](https://poker-quiz.vercel.app) · [Report Bug](https://github.com/tyloo/poker-quiz/issues) · [Request Feature](https://github.com/tyloo/poker-quiz/issues)
+  [Live Demo](https://pq.tyloo.fr) · [Report Bug](https://github.com/tyloo/poker-quiz/issues) · [Request Feature](https://github.com/tyloo/poker-quiz/issues)
 </div>
 
 ---
